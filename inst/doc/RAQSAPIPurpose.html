@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html lang="en-US" xml:lang="en-US">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>RAQSAPI - Objectives of the RAQSAPI package</title>
+
+<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  p.abstract{
+    text-align: center;
+    font-weight: bold;
+  }
+  div.abstract{
+    margin: auto;
+    width: 90%;
+  }
+</style>
+
+
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">RAQSAPI - Objectives of the RAQSAPI package</h1>
+<h3 class="subtitle">RAQSAPI Purpose</h3>
+<h4 class="author">Clinton Mccrowey</h4>
+<address class="author_afil">
+“United States Environmental Protection Agency (US EPA), Region III, Air and Radiation Division, Air Quality and Analysis Branch”<br><div class="abstract">
+<p class="abstract">Abstract</p>
+RAQSAPI is an add-on package for the R programming language and environment (hereafter referred to as simply “R”) that connects R to a U.S. EPA database for the retrieval of ambient air pollution data. This document is intended to state the purpose of creating RAQSAPI.
+</div>
+
+
+
+<div id="the-air-quality-system-aqs" class="section level1">
+<h1>The Air Quality System (AQS)</h1>
+<p>The Clean Air act <span class="citation">(<span>“Overview of the <span>C</span>lean <span>A</span>ir <span>A</span>ct and <span>A</span>ir <span>P</span>ollution”</span> 2021)</span> requires all federal, state, local and tribal air pollution control agencies monitor ambient air for concentrations of certain air pollutants. Codified in 40 CFR Part 58 are the statutory requirements for these monitoring programs, including monitoring network technical requirements, operating schedules, data certification, data submittal and archiving requirements. In addition to the required air pollution and meteorological monitoring, pollution control agencies often perform additional and/or voluntary air monitoring.</p>
+<ul>
+<li>The three objectives of ambient air monitoring programs as stated in 40 CFR Part 58 Appendix D.1 are as follows:
+<ul>
+<li>Provide air pollution data to the public in a timely manner;</li>
+<li>Support compliance with ambient air quality standards and emissions strategy development; and</li>
+<li>Support for air pollution research studies.</li>
+</ul></li>
+</ul>
+<p>As required by 40 CFR Part 58, air pollution and meteorological data is submitted to the United States Environmental Protection Agency along with associated metadata and quality assurance metadata via EPA’s Air Quality System (AQS)<span class="citation">(<span>“About <span>AQS</span> Data”</span> 2019)</span>.</p>
+<div id="about-aqs-data-mart" class="section level2">
+<h2>About AQS Data Mart</h2>
+<p>AQS Data Mart is a publicly accessible mirror of data stored on the AQS database designed to make air monitoring data more accessible and useful to the technical community, scientific community and the general public. Data on AQS is copied to AQS Data Mart once per week and this data is made available to the public through web-based applications and APIs (application programming interface) <span class="citation">(<span>“AQS Data Mart Welcome”</span> 2018)</span>. RAQSAPI functions use the APIs provided by AQS Data Mart to retrieve data.</p>
+<!-- # The R programming language -->
+<!--  The R language and it's environment [@website:whatisR] (Hereafter referred to -->
+<!--  as simply R) is a domain-specific programming environment that is inspired by -->
+<!--  the S statistical language and it's respective environment which was developed -->
+<!--  at Bell Laboratories (formerly AT&T, now Lucent Technologies) by John Chanmbers -->
+<!--  et al. The first public release of the S programming environment was released -->
+<!--  in 1976 [@website:whatisR]. -->
+<!--  The reference implementation of R has been accepted as a GNU project -->
+<!--  [@website:GNUproject] which means the code is free//libre open source software -->
+<!--  (FLOSS) under the terms of the [GNU General Public -->
+<!--  License](https://www.r-project.org/COPYING) (GNU GPL) [@website:whatisR]. -->
+<!-- ## Why R? -->
+<!--  The R environment is available for most of the major computer operating -->
+<!--  systems - Windows, unix and \*nix-like platforms such as Solaris, GNU\\Linux, -->
+<!--  \*BSD, Darwin-derived platforms such as Mac OS X and other POSIX and POSIX-like -->
+<!--  operating systems. -->
+<!--  R also is an well-established statistical programming environment that has wide -->
+<!--  adoption in the statistical, academic, and data analytics communities because -->
+<!--  of it's good third party support, a large user community that accomodates users -->
+<!--  from all experience levels and multilanguage support. -->
+<!--  R is easily extensible, in fact there is a large collection of Free packages -->
+<!--  available that extends the capabilities of the base R environment. The largest -->
+<!--  collection of packages available for R is hosted by -->
+<!--  [The Comprehensive R Archive Network (CRAN)](https://cran.r-project.org), -->
+<!--  currently CRAN hosts over 15,000 packages and are available to anyone under -->
+<!--  permissive licensing terms. These packages are developed and maintained by the -->
+<!--  worldwide R user community. -->
+<!-- * The design of the R statistical programming environment makes it a great -->
+<!--     platform for statistical calculation, data manipulation and graphical -->
+<!--     display of data. The R includes: -->
+<!--   + Packages such as feather, foreign, dbplyr, readR, which can be used to -->
+<!--       import data from external sources. -->
+<!--   + R is has support from many different integrated development environments to -->
+<!--       ease development including Visual Studio Code, Rstudio, Eclipse, Rattle -->
+<!--       GUI, R Commander, RKWard, Jupyter, StatET. R syntax highlighting is also -->
+<!--       supported in many common text and source code editors either natively or -->
+<!--       via an application add-on such as Emacs, Vim, Notepad++, Sublime Text -->
+<!--       and Atom. -->
+<!--   + R has a large set of operators for performing calculations on arrays and -->
+<!--       tabular data sets. -->
+<!--       a.  A functional programming style that makes it easy to apply a single -->
+<!--       operation on large data sets. -->
+<!--   + Tools for graphical output of data such as knitr and rmarkdown for creating -->
+<!--   reports, esquisse and ggplot2 creating graphs, openair for creating windroses. -->
+<!--   Rshiny for a web interface. -->
+<!--   + Linear and non-linear modeling tools. -->
+<!--   + R has hooks into many popular software packages used for geospatial analysis. -->
+<!--   These tools make R an excellent environment to perform statistical analysis on -->
+<!--   ambient air monitoring data. -->
+</div>
+</div>
+<div id="benefits-of-using-raqsapi" class="section level1">
+<h1>Benefits of using RAQSAPI</h1>
+<p>RAQSAPI package for R is a easy to use R package that allows anyone using the R programming environment to retrieve data from AQS Data Mart Database vi the exposed API interface using a set of functions with consistent input variables, function names and output structure. RAQSAPI does not require installation of software or drivers external to R. The goal of RAQSAPI is to make a package which eases retrieving of ambient air monitoring data from AQS Data Mart.</p>
+<ul>
+<li>Some possible uses of the RAQSAPI package
+<ul>
+<li>Can be used as part of a monitoring agency’s data validation process</li>
+<li>RAQSAPI can be used for data retrieval as part of quality management of air data</li>
+<li>Ambient air monitoring data retrieval for Design value calculations</li>
+<li>To retrieve ambient air pollution concentrations
+<ul>
+<li>Useful for retrieving ambient background air pollution data needed model to perform air quality dispersion modeling</li>
+</ul></li>
+<li>Data retrieval for automation of Network Analysis</li>
+<li>Statistical analysis of ambient air data</li>
+<li>Compare ambient air pollution concentrations from different air monitoring sites.</li>
+<li>Data retrieval to generate quarterly/audit reports</li>
+</ul></li>
+</ul>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1 class="unnumbered">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-AboutAQSdata" class="csl-entry">
+<span>“About <span>AQS</span> Data.”</span> 2019. May 2019. <a href="https://aqs.epa.gov/aqsweb/documents/about_aqs_data.html">https://aqs.epa.gov/aqsweb/documents/about_aqs_data.html</a>.
+</div>
+<div id="ref-AQSDataMartWelcome" class="csl-entry">
+<span>“AQS Data Mart Welcome.”</span> 2018. August 2018. <a href="https://aqs.epa.gov/aqsweb/documents/data_mart_welcome.html">https://aqs.epa.gov/aqsweb/documents/data_mart_welcome.html</a>.
+</div>
+<div id="ref-cleanairact" class="csl-entry">
+<span>“Overview of the <span>C</span>lean <span>A</span>ir <span>A</span>ct and <span>A</span>ir <span>P</span>ollution.”</span> 2021. <a href="https://www.epa.gov/clean-air-act-overview">https://www.epa.gov/clean-air-act-overview</a>.
+</div>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
