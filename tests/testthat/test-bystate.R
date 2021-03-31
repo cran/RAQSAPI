@@ -1,9 +1,7 @@
+#' @importFrom magrittr `%>%`()
+test_that("by_state functions", {
 testthat::skip_if_offline()
 testthat::skip_on_cran()
-library("magrittr")
-
-context("RAQSAPI by_state functions")
-test_that("by_state functions", {
 server <- "AQSDatamartAPI"
 datamartAPI_user <- "test@aqs.api"
 
@@ -121,5 +119,3 @@ aqs_transactionsample_by_state(parameter = "45201",
 
 
 })
-
-devtools::unload(package = "magrittr")

@@ -65,22 +65,31 @@ call.</span></th>
 <p>RAQSAPI functions are named according to the service and filter variables that are available by the Data Mart API.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <div id="data-mart-aggregate-functions" class="section level2">
 <h2>Data Mart aggregate functions</h2>
-<p>These functions retrieve aggregated data from the Data Mart API and are grouped by how each function aggregates the data. There are 5 different families of related aggregate functions in which the Data Mart API groups data, _by_site, _by_county, _by_state, _by_&lt;latitude/longitude bounding box&gt; (_by_box) and _by_&lt;core based statistical area&gt; (_by_cbsa). Within each family of aggregated data functions there are functions that call on the 10 different aggregate services that the Data Mart API provides.</p>
-<ul>
-<li><strong>These eleven services are</strong>:</li>
-</ul>
+<p>These functions retrieve aggregated data from the Data Mart API and are grouped by how each function aggregates the data. There are 7 different families of related aggregate functions in which the AQS Data Mart API groups data.</p>
+<p><strong>These seven families are</strong>:</p>
 <ol style="list-style-type: decimal">
-<li><strong>Monitors</strong> (<em>monitors_by_</em>):</li>
-<li><strong>Sample Data</strong> (<em>sampledata_by_</em>):</li>
-<li><strong>Daily Summary Data</strong> (<em>dailydata_by_</em>):</li>
-<li><strong>Annual Summary Data</strong> (<em>annualdata_by_</em>):</li>
-<li><strong>Quality Assurance - Blanks Data</strong> (<em>qa_blanks_by_</em>):</li>
-<li><strong>Quality Assurance - Collocated Assessments</strong> (<em>qa_collocated_assessments_by_</em>):</li>
-<li><strong>Quality Assurance - Flow Rate verifications</strong> (<em>qa_flowrateverification_by_</em>):</li>
-<li><strong>Quality Assurance - Flow Rate Audits</strong> (<em>aqs_qa_flowrateaudit_by_</em>):</li>
-<li><strong>Quality Assurance - One Point Quality Control Raw Data</strong> (<em>qa_one_point_qc_by_</em>):</li>
-<li><strong>Quality Assurance - PEP Audits</strong> (<em>qa_pep_audit_by_</em>):</li>
-<li><strong>Transaction Sample - AQS Submission data in transaction Format (RD)</strong> (<em>aqs_transactionsample_by_</em>):</li>
+<li><strong>_by_site</strong></li>
+<li><strong>_by_county</strong></li>
+<li><strong>_by_state</strong></li>
+<li><strong>_by_&lt;latitude/longitude bounding box&gt;</strong> (_by_box)</li>
+<li><strong>_by_&lt;monitoring agency&gt;</strong> (_by_MA)</li>
+<li><strong>_by_&lt;Primary Quality Assurance Organization&gt;</strong> (_by_pqao)</li>
+<li><strong>_by_&lt;core based statistical area&gt;</strong> (_by_cbsa).</li>
+</ol>
+<p>Within these families of aggregated data functions there are functions that call on the 11 different aggregate services that the Data Mart API provides. <strong>Note that not all aggregations are available for each service.</strong></p>
+<p><strong>These eleven services are</strong>:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Monitors</strong> (<em>monitors_by_</em>)</li>
+<li><strong>Sample Data</strong> (<em>sampledata_by_</em>)</li>
+<li><strong>Daily Summary Data</strong> (<em>dailydata_by_</em>)</li>
+<li><strong>Annual Summary Data</strong> (<em>annualdata_by_</em>)</li>
+<li><strong>Quality Assurance - Blanks Data</strong> (<em>qa_blanks_by_</em>)</li>
+<li><strong>Quality Assurance - Collocated Assessments</strong> (<em>qa_collocated_assessments_by_</em>)</li>
+<li><strong>Quality Assurance - Flow Rate verifications</strong> (<em>qa_flowrateverification_by_</em>)</li>
+<li><strong>Quality Assurance - Flow Rate Audits</strong> (<em>aqs_qa_flowrateaudit_by_</em>)</li>
+<li><strong>Quality Assurance - One Point Quality Control Raw Data</strong> (<em>qa_one_point_qc_by_</em>)</li>
+<li><strong>Quality Assurance - PEP Audits</strong> (<em>qa_pep_audit_by_</em>)</li>
+<li><strong>Transaction Sample - AQS Submission data in transaction Format (RD)</strong> (<em>aqs_transactionsample_by_</em>)</li>
 </ol>
 <table>
 <colgroup>

@@ -147,22 +147,22 @@ Air Quality and Analysis Branch<br>
 
 <div id="installing-raqsapi" class="section level1">
 <h1>Installing RAQSAPI</h1>
-<!-- #uncomment if/hen the package has been accepted by CRAN -->
-<!-- ## Installing the stable version from CRAN -->
-<!-- > install.packages(pkgs = "RAQSAPI", -->
-<!--                    dependencies = TRUE -->
-<!--                    ) -->
-<div id="installing-the-development-version-of-raqsapi" class="section level2">
-<h2>Installing the development version of RAQSAPI</h2>
+<p>Either install the stable version from CRAN or install the latest development version from GitHub.</p>
+<div id="option-1-installing-the-stable-version-from-cran" class="section level2">
+<h2>Option 1: Installing the stable version from CRAN</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="at">pkgs=</span><span class="st">&quot;RAQSAPI&quot;</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span> )</span></code></pre></div>
+</div>
+<div id="option-2-installing-the-development-version-of-raqsapi" class="section level2">
+<h2>Option 2: Installing the development version of RAQSAPI</h2>
 <p>to install the development version of RAQSAPI, first If not already installed, install the remotes package and its dependencies. Then run the following in an R environment.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="at">repo =</span> <span class="st">&quot;USEPA/raqsapi&quot;</span>,</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">dependencies =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">upgrade =</span> <span class="st">&quot;always&quot;</span>,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">build =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                        <span class="co">#optional, if you want the manual, requires pandoc</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">build_manual =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">build_vignettes =</span> <span class="cn">TRUE</span> </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                        )</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="at">repo =</span> <span class="st">&quot;USEPA/raqsapi&quot;</span>,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">dependencies =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">upgrade =</span> <span class="st">&quot;always&quot;</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">build =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                        <span class="co">#optional, if you want the manual, requires pandoc</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                        <span class="at">build_manual =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">build_vignettes =</span> <span class="cn">TRUE</span> </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                        )</span></code></pre></div>
 </div>
 </div>
 

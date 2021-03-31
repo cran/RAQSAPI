@@ -1,9 +1,7 @@
+#' @importFrom magrittr `%>%`()
+test_that("by_PQAO functions", {
 testthat::skip_if_offline()
 testthat::skip_on_cran()
-library("magrittr")
-
-context("RAQSAPI by_PQAO functions")
-test_that("by_PQAO functions", {
 server <- "AQSDatamartAPI"
 datamartAPI_user <- "test@aqs.api"
 
@@ -79,5 +77,3 @@ datamartAPI_user <- "test@aqs.api"
     expect_match(regexp = "Success")
 
 })
-
-devtools::unload(package = "magrittr")
