@@ -51,13 +51,13 @@ the API server mostly used for debugging purposes in
 addition to the data requested.}
 }
 \value{
-a tibble or an AQS_Data Mart_APIv2 S3 object of monitors from a
+a tibble or an AQS_Data Mart_APIv2 S3 object of monitors from the
 selected state
 }
 \description{
 \lifecycle{stable}
-Returns a table of monitors at all sites with the provided parameternum,
-stateFIPS and county_code for bdate - edate time frame.
+Returns a table of monitors and related metadata at sites with the
+provided parameter, and stateFIPS for bdate - edate time frame.
 }
 \section{by_state aggregate functions}{
 NA

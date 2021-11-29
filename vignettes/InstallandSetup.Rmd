@@ -30,8 +30,8 @@ install.packages(pkgs="RAQSAPI", dependencies = TRUE )
 
 ## Option 2: Installing the development version of RAQSAPI
 
-to install the development version of RAQSAPI, first If not already installed,
-install the remotes package and its dependencies. Then run the following in an
+To install the development version of `RAQSAPI`, first if not already installed,
+install the `remotes` package and its dependencies. Then run the following in a
 R environment.
 
 ```R
@@ -39,7 +39,8 @@ remotes::install_github(repo = "USEPA/raqsapi",
                         dependencies = TRUE,
                         upgrade = "always",
                         build = TRUE,
-                        #optional, if you want the manual, requires pandoc
+                        #optional, set TRUE if the manual is desired,
+                        #requires pandoc
                         build_manual = FALSE,
                         build_vignettes = TRUE 
                         )

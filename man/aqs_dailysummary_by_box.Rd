@@ -79,7 +79,7 @@ is a tibble of the data returned.
 \description{
 \lifecycle{stable}
 Returns a tibble or an AQS_Data Mart_APIv2 S3
-object containing sample data bounded within a
+object containing daily summary data bounded within a
 latitude/longitude bounding box
 }
 \note{

@@ -52,15 +52,18 @@ addition to the data requested.}
 }
 \value{
 a tibble or an AQS_Data Mart_APIv2 S3 object that contains daily
-summary statistics for the given parameter for a single stateFIPS
+summary statistics for the given parameter for a single stateFIPS.
 An AQS_Data Mart_APIv2 is a 2 item named list in which the first
 item (\$Header) is a tibble of header information from the AQS API
 and the second item (\$Data) is a tibble of the data returned.
 }
 \description{
 \lifecycle{stable}
-Returns a tibble or an AQS_Data Mart_APIv2 S3
-object containing sample data data aggregated by state FIPS.
+Returns multiple years of data where daily data is
+aggregated at the state level. Returned is a daily summary
+matching the input parameter and stateFIPS provided for bdate - edate
+time frame. Data is aggregated at the state level. Variables returned
+include mean value, maxima, percentiles, and etc.
 }
 \note{
 The AQS API only allows for a single year of dailysummary to be

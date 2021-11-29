@@ -49,7 +49,17 @@ RAQSAPI_functions <- c(
 "aqs_monitors_by_site",  
 "aqs_monitors_by_state",  
 "aqs_parameters_by_class",  
-"aqs_pqaos",  
+"aqs_pqaos",
+"aqs_qa_annualPeferomanceeval_by_county",
+"aqs_qa_annualPeferomanceeval_by_MA",
+"aqs_qa_annualPeferomanceeval_by_pqao",
+"aqs_qa_annualPeferomanceeval_by_site",
+"aqs_qa_annualPeferomanceeval_by_state",
+"aqs_qa_annualPeferomanceevaltransaction_by_county",
+"aqs_qa_annualPeferomanceevaltransaction_by_MA",
+"aqs_qa_annualPeferomanceevaltransaction_by_pqao",
+"aqs_qa_annualPeferomanceevaltransaction_by_site",
+"aqs_qa_annualPeferomanceevaltransaction_by_state",
 "aqs_qa_blanks_by_county",  
 "aqs_qa_blanks_by_MA",  
 "aqs_qa_blanks_by_pqao",  
@@ -80,6 +90,11 @@ RAQSAPI_functions <- c(
 "aqs_qa_pep_audit_by_pqao",  
 "aqs_qa_pep_audit_by_site",  
 "aqs_qa_pep_audit_by_state",
+"aqs_quarterlysummary_by_box",
+"aqs_quarterlysummary_by_county",
+"aqs_quarterlysummary_by_pqao",
+"aqs_quarterlysummary_by_site",
+"aqs_quarterlysummary_by_state",
 "aqs_removeheader",
 "aqs_revisionhistory",  
 "aqs_sampledata_by_box",  
@@ -87,6 +102,7 @@ RAQSAPI_functions <- c(
 "aqs_sampledata_by_county",  
 "aqs_sampledata_by_site",  
 "aqs_sampledata_by_state",  
+"aqs_sampledurations",
 "aqs_sign_up",  
 "aqs_sites_by_county",  
 "aqs_states",
@@ -139,6 +155,12 @@ by_countyfunctions <- paste("._by_county", sep = '|')
 str_subset(string = RAQSAPI_functions, pattern = by_countyfunctions) %>%
   cat(sep = "  \n")
 
+## ----_by_STATEfunctions, echo = FALSE, comment = NA---------------------------
+by_STATEfunctions <- paste("._by_state", sep = '|')
+
+str_subset(string = RAQSAPI_functions, pattern = by_STATEfunctions) %>%
+  cat(sep = "  \n")
+
 ## ----_by_MAfunctions, echo = FALSE, comment = NA------------------------------
 by_MAfunctions <- paste("._by_MA", sep = '|')
 
@@ -161,12 +183,6 @@ str_subset(string = RAQSAPI_functions, pattern = by_pqaofunctions) %>%
 by_BOXfunctions <- paste("._by_box", sep = '|')
 
 str_subset(string = RAQSAPI_functions, pattern = by_BOXfunctions) %>%
-  cat(sep = "  \n")
-
-## ----_by_STATEfunctions, echo = FALSE, comment = NA---------------------------
-by_STATEfunctions <- paste("._by_state", sep = '|')
-
-str_subset(string = RAQSAPI_functions, pattern = by_STATEfunctions) %>%
   cat(sep = "  \n")
 
 ## ----misc, echo = FALSE, comment = NA-----------------------------------------

@@ -63,20 +63,20 @@ purposes in addition to the data requested.}
 }
 \value{
 a tibble or an AQS_Data_Mart_APIv2 S3 object that contains quality
-assurance blank sample data for single monitoring site. An
-AQS_Data_Mart_APIv2 is a 2 item named list in which the first item
-($Header) is a tibble of header information from the AQS API and
-the second item ($Data) is a tibble of the data returned.
+assurance blank sample data for single monitoring site for the
+sitenum, countycode and stateFIPS requested for the time frame
+between bdate and edate. An AQS_Data_Mart_APIv2 is a 2 item named
+list in which the first item ($Header) is a tibble of header
+information from the AQS API and the second item ($Data) is a
+tibble of the data returned.
 }
 \description{
 \lifecycle{stable}
-Aggregates multiple years of qa blank data where the blank
-data is aggregated at the site level and returns table
-with a tibble of Quality assurance data - blanks samples.
+Returns a table of blank quality assurance data.
 Blanks are unexposed sample collection devices (e.g.,
 filters) that are transported with the exposed sample devices
 to assess if contamination is occurring during the transport
-or handling of the samples.
+or handling of the samples. Data is aggregated at the site level.
 }
 \note{
 The AQS API only allows for a single year of qa_blank data to be
@@ -112,6 +112,9 @@ Other Aggregate _by_site functions:
 \code{\link{aqs_annualsummary_by_site}()},
 \code{\link{aqs_dailysummary_by_site}()},
 \code{\link{aqs_monitors_by_site}()},
+\code{\link{aqs_qa_annualpeferomanceeval_by_site}()},
+\code{\link{aqs_qa_annualperformanceevaltransaction_by_county}()},
+\code{\link{aqs_qa_annualperformanceevaltransaction_by_site}()},
 \code{\link{aqs_qa_collocated_assessments_by_site}()},
 \code{\link{aqs_qa_flowrateaudit_by_site}()},
 \code{\link{aqs_qa_flowrateverification_by_site}()},

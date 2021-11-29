@@ -11,6 +11,8 @@ aqs_transactionsample_by_site(
   stateFIPS,
   countycode,
   sitenum,
+  cbdate = NA_Date_,
+  cedate = NA_Date_,
   return_header = FALSE
 )
 }
@@ -39,6 +41,20 @@ list of available county codes for each state.}
 (with leading zeros) within the county and state being
 requested.}
 
+\item{cbdate}{a R date object which represents a "beginning
+date of last change" that indicates when the data was last
+updated. cbdate is used to filter data based on the change
+date. Only data that changed on or after this date will be
+returned. This is an optional variable which defaults
+to NA_Date_.}
+
+\item{cedate}{a R date object which represents an "end
+date of last change" that indicates when the data was last
+updated. cedate is used to filter data based on the change
+date. Only data that changed on or before this date will be
+returned. This is an optional variable which defaults
+to NA_Date_.}
+
 \item{return_header}{If FALSE (default) only returns data requested.
 If TRUE returns a AQSAPI_v2 object which is a two
 item list that contains header information returned
@@ -52,7 +68,7 @@ corresponding to the inputs provided.
 }
 \description{
 \lifecycle{stable}
-Returns transactionsample data - aggregated by site
+Returns transactionsample data aggregated by site
 in the AQS Submission Transaction Format (RD) sample (raw) data for
 a parameter code aggregated by matching input parameter, sitenum,
 countycode and stateFIPS provided for bdate - edate time frame.
@@ -92,6 +108,9 @@ Other Aggregate _by_site functions:
 \code{\link{aqs_annualsummary_by_site}()},
 \code{\link{aqs_dailysummary_by_site}()},
 \code{\link{aqs_monitors_by_site}()},
+\code{\link{aqs_qa_annualpeferomanceeval_by_site}()},
+\code{\link{aqs_qa_annualperformanceevaltransaction_by_county}()},
+\code{\link{aqs_qa_annualperformanceevaltransaction_by_site}()},
 \code{\link{aqs_qa_blanks_by_site}()},
 \code{\link{aqs_qa_collocated_assessments_by_site}()},
 \code{\link{aqs_qa_flowrateaudit_by_site}()},

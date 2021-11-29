@@ -1,7 +1,7 @@
 ---
 title: "RAQSAPI - Using RAQSAPI"
 author: "Clinton Mccrowey physical scientist - US EPA"
-date: "June 11, 2020"
+date: "April 5, 2021"
 output:
   rmarkdown::html_vignette: default
 vignette: >
@@ -15,7 +15,8 @@ vignette: >
 # Using The RAQSAPI library
 
 ## Load RAQSAPI                           
-  after successfully installing the RAQSAPI package, load the RAQSAPI library: 
+  after successfully installing the `RAQSAPI` package, load the `RAQSAPI`
+  library: 
 
 ```R
 library(RAQSAPI)
@@ -36,8 +37,8 @@ If you have not already done so you will need to sign up with AQS Data Mart
   aqs_sign_up function with the parameter "email" set to an existing
   account. A new key will be e-mailed to the account given.
 
-The credentials used to access the Data Mart API service are stored in an R
-  environment variable that needs to be set every time the RAQSAPI library is
+The credentials used to access the Data Mart API service are stored in a R
+  environment variable that needs to be set every time the `RAQSAPI` library is
   attached or the key is changed. Without valid credentials, the Data Mart
   server will reject any request sent to it. The key used with Data Mart is a
   key and is not a password, so the RAQSAPI library does not treat the key as a
@@ -52,7 +53,64 @@ The credentials used to access the Data Mart API service are stored in an R
   server.
 
 | <span style="color:red"> Note: The credentials used to access AQS Data Mart \
-API are not the same as the credentials used to access AQS. AQS users who do \
-not have access to the AQS Data Mart will need to create new credentials \
+API is not the same as the credentials used to access AQS. AQS users who do \
+not have access to the AQS Data Mart will need to create new credentials. \
 </span> |
 | -- |
+
+
+## (suggested) Use the `keyring` package to manage credentials
+It is highly suggested that users use a keyring manager to store and retrieve
+their credentials while using RAQSAPI. One such credential manager is provided
+by the `keyring`
+package ^[[R `Keyring` package]https://cran.r-project.org/package=keyring)].
+The `Keyring` package uses the credential manager available for most popular
+operating systems to store and manage user credentials. This will help avoid
+hard coding credential information into R scripts.
+
+To use the `keyring` package with `RAQSAPI` first install `keyring`:
+
+> install.package("keyring")
+
+Ensure that your system is supported by the `keyring` package before proceeding.
+
+> keyring::has_keyring_support()
+
+then set the keyring used to access AQS Data Mart (make sure to replace the text
+in the angled brackets with your specific user information):
+
+> library("keyring")
+  keyring::key_set(service = "AQSDatamart",
+                   username = "\<user email account\>")
+
+a popup window will appear for the user to input their keyring information.
+Enter the AQS Data mart credential key associated with the AQS user name
+provided, then hit enter. Now the AQS Data Mart user credential is set using
+`keyring`.
+
+To retrieve the keyring to use with `RAQSAPI` load the `keyring` package and use
+the function key_get to return the user credential to RAQSAPI:
+
+>library(RAQSAPI)
+ library(keyring)
+ datamartAPI_user <- \<user email account\>
+ server <- "AQSDatamart"
+
+then pass these variables to the aqs_credentials function when using RAQSAPI:
+
+> aqs_credentials(username = datamartAPI_user,
+                  key = key_get(service = server,
+                                username = datamartAPI_user
+                                )
+                  )
+                             
+To change the keyring stored with the `keyring` package repeat the steps above
+to call the keyring::key_set function again with the new credential information.
+
+To retrieve a list of all keyrings managed with the `keyring` package use
+the function:
+> keyring::key_list()
+
+Refer the the[`keyring` package documentation](
+https://cran.r-project.org/package=keyring/readme/README.html)
+for an in depth explanation on using the `keyring` package.

@@ -63,12 +63,13 @@ purposes in addition to the data requested.}
 }
 \value{
 a tibble or an AQS_Data Mart_APIv2 S3 object of monitors from a
-selected site
+selected stateFIPS, county, and sitenum combination.
 }
 \description{
 \lifecycle{stable}
-Returns a table of monitors at all sites with the provided parameternum,
-stateFIPS, county_code, and sitenum for bdate - edate time frame.
+Returns a table of monitors and related metadata at sites with the
+provided parameter, stateFIPS, county_code, and sitenum for
+bdate - edate time frame.
 }
 \note{
 all monitors that operated between the bdate and edate will be returned
@@ -99,6 +100,9 @@ NA
 Other Aggregate _by_site functions: 
 \code{\link{aqs_annualsummary_by_site}()},
 \code{\link{aqs_dailysummary_by_site}()},
+\code{\link{aqs_qa_annualpeferomanceeval_by_site}()},
+\code{\link{aqs_qa_annualperformanceevaltransaction_by_county}()},
+\code{\link{aqs_qa_annualperformanceevaltransaction_by_site}()},
 \code{\link{aqs_qa_blanks_by_site}()},
 \code{\link{aqs_qa_collocated_assessments_by_site}()},
 \code{\link{aqs_qa_flowrateaudit_by_site}()},

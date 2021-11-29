@@ -84,7 +84,7 @@ aqs_knownissues <- function(return_header = FALSE)
 #' @return a tibble or an AQS_Data Mart_APIv2 S3 object of all counties in the
 #'            requested state.
 #' @examples
-#'           #returns an tibble all the counties
+#'           #returns a tibble all the counties
 #'           #   in North Carolina the county FIPS codes (county codes) for
 #'           #   each.
 #'           \dontrun{aqs_counties_by_state(stateFIPS = "37")}
@@ -180,7 +180,8 @@ aqs_classes <- function(return_header = FALSE)
 #'                  @seealso [aqs_classes()] for retrieving
 #'                  available classes.  The class R character object must be a
 #'                  valid class as returned from aqs_classes(). The class must
-#'                  be an exact match to what is returned from aqs_classes().
+#'                  be an exact match to what is returned from aqs_classes()
+#'                  (case sensitive).
 #' @param return_header If FALSE (default) only returns data requested.
 #'                        If TRUE returns a AQSAPI_v2 object which is a two
 #'                        item list that contains header information returned
@@ -267,15 +268,18 @@ aqs_pqaos <- function(return_header = FALSE)
 
 #' @title aqs_cbsas
 #' @description \lifecycle{stable}
-#'                 Returns a table of all cbsas and their cbsa codes.
+#'                 Returns a table of all Core Based Statistical Areas (cbsa)
+#'                 and their associated cbsa_codes. for constructing other
+#'                 requests.
 #' @importFrom magrittr `%<>%`
 #' @param return_header If FALSE (default) only returns data requested.
 #'                        If TRUE returns a AQSAPI_v2 object which is a two
 #'                        item list that contains header information returned
 #'                        from the API server mostly used for debugging
 #'                        purposes in addition to the data requested.
-#' @return a tibble or an AQS_Data Mart_APIv2  S3 object of all cbsas and
-#'            their cbsa codes for constructing other requests.
+#' @return a tibble or an AQS_Data Mart_APIv2  S3 object of all Core Based
+#'         Statistical Areas (cbsa) and their cbsa_codes for constructing
+#'         other requests.
 #' @examples #returns a tibble or an AQS_Data Mart_APIv2 S3 object of cbsas
 #'           #  and their respective cbsa codes
 #'           \dontrun{ aqs_cbsas() }
@@ -298,8 +302,7 @@ aqs_cbsas <- function(return_header = FALSE)
 #' @title aqs_states
 #' @description \lifecycle{stable}
 #'                 Returns a table of US states, US territories, and the
-#'                 district or Columbia with their respective FIPS codes used
-#'                 for constructing other requests
+#'                 district or Columbia with their respective FIPS codes.
 #' @importFrom magrittr `%<>%`
 #' @param return_header If FALSE (default) only returns data requested.
 #'                        If TRUE returns an AQSAPI_v2 object which is a two
@@ -307,7 +310,7 @@ aqs_cbsas <- function(return_header = FALSE)
 #'                        from the API server mostly used for debugging
 #'                        purposes in addition to the data requested.
 #' @return a tibble or an AQS_Data Mart_APIv2 S3 object of states and their
-#'            FIPS codes used for constructing other requests.
+#'            associated FIPS codes.
 #' @examples #returns a tibble of states and their FIPS codes
 #'           \dontrun{aqs_states()}
 #' @export
@@ -393,7 +396,6 @@ aqs_revisionhistory <- function(return_header = FALSE)
   return(history)
 }
 
-
 #' @title aqs_fieldsbyservice
 #' @description \lifecycle{stable}
 #'                Returns a tibble or an AQS_Data Mart_APIv2 S3
@@ -411,7 +413,7 @@ aqs_revisionhistory <- function(return_header = FALSE)
 #'                        purposes in addition to the data requested.
 #' @examples # Returns a tibble containing a list and definitions
 #'          #  of fields in the Sample Data service
-#'          \dontrun{fields_by_service(service = "list")}
+#'          \dontrun{aqs_fieldsbyservice(service = "sampleData")}
 #'
 #' @return a tibble or an AQS_Data Mart_APIv2 S3 object with containing the list
 #'   and definitions of fields requested service
@@ -421,4 +423,40 @@ aqs_fields_by_service <- function(service, return_header = FALSE)
   fields <- aqs_metadata_service(filter = "fieldsByService", service = service)
    if (!return_header) fields %<>% aqs_removeheader
   return(fields)
+}
+
+
+#' @title aqs_sampledurations
+#' @description \lifecycle{stable}
+#'                 Returns a table of sample durations and their
+#'                 associated duration codes. Returned values are not calculated
+#'                 durations such as 8 hour CO or O${_3}$ rolling averages, 3/6
+#'                 day PM averages or Pb 3 month rolling averages.
+#' @importFrom magrittr `%<>%`
+#' @param return_header If FALSE (default) only returns data requested.
+#'                        If TRUE returns a AQSAPI_v2 object which is a two
+#'                        item list that contains header information returned
+#'                        from the API server mostly used for debugging
+#'                        purposes in addition to the data requested.
+#' @return a tibble or an AQS_Data Mart_APIv2 S3 object of sample durations and
+#'         their associated duration codes
+#'                 (groups of parameters, i.e. "criteria" or "all").
+#' @examples #returns a tibble or an AQS_Data Mart_APIv2 S3 object of
+#'           #
+#'          \dontrun{ aqs_sampledurations() }
+#' @export
+aqs_sampledurations <- function(return_header = FALSE)
+{
+  AQS_domain <- "aqs.epa.gov"
+
+    durations <- aqs(service = "list",
+                 filter = "duration",
+                 user =  getOption("aqs_username"),
+                 user_key =  getOption("aqs_key"),
+                 variables = NULL,
+                 AQS_domain = AQS_domain
+                 )
+
+  if (!return_header) durations %<>% aqs_removeheader
+  return(durations)
 }

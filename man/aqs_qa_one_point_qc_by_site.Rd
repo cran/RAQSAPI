@@ -91,7 +91,7 @@ API server. This operation has a linear run time of
 # returns a tibbble of One Point QC data for
           #  ozone at the Truro National Seashore site (\#0002) in
           #  Barnstable County, MA for January 2018:
- \dontrun{aqs_qa_one_point_qc_by_site_multiyear(parameter = "44201",
+ \dontrun{aqs_qa_one_point_qc_by_site(parameter = "44201",
                                     bdate = as.Date("20180101",
                                                    format = "\%Y\%m\%d"),
                                     edate = as.Date("20180131",
@@ -107,6 +107,9 @@ Other Aggregate _by_site functions:
 \code{\link{aqs_annualsummary_by_site}()},
 \code{\link{aqs_dailysummary_by_site}()},
 \code{\link{aqs_monitors_by_site}()},
+\code{\link{aqs_qa_annualpeferomanceeval_by_site}()},
+\code{\link{aqs_qa_annualperformanceevaltransaction_by_county}()},
+\code{\link{aqs_qa_annualperformanceevaltransaction_by_site}()},
 \code{\link{aqs_qa_blanks_by_site}()},
 \code{\link{aqs_qa_collocated_assessments_by_site}()},
 \code{\link{aqs_qa_flowrateaudit_by_site}()},

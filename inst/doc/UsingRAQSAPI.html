@@ -12,7 +12,7 @@
 
 <meta name="author" content="Clinton Mccrowey physical scientist - US EPA" />
 
-<meta name="date" content="2020-06-11" />
+<meta name="date" content="2021-04-05" />
 
 <title>RAQSAPI - Using RAQSAPI</title>
 
@@ -40,6 +40,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -140,7 +141,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <h1 class="title toc-ignore">RAQSAPI - Using RAQSAPI</h1>
 <h4 class="author">Clinton Mccrowey physical scientist - US EPA</h4>
-<h4 class="date">June 11, 2020</h4>
+<h4 class="date">April 5, 2021</h4>
 
 
 
@@ -148,13 +149,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>Using The RAQSAPI library</h1>
 <div id="load-raqsapi" class="section level2">
 <h2>Load RAQSAPI</h2>
-<p>after successfully installing the RAQSAPI package, load the RAQSAPI library:</p>
+<p>after successfully installing the <code>RAQSAPI</code> package, load the <code>RAQSAPI</code> library:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RAQSAPI)</span></code></pre></div>
 </div>
 <div id="sign-up-and-setting-up-user-credentials-with-the-raqsapi-library" class="section level2">
 <h2>Sign up and setting up user credentials with the RAQSAPI library</h2>
 <p>If you have not already done so you will need to sign up with AQS Data Mart using aqs_sign_up function, <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> this function takes one input, “email”, which is a R character object, that represents the email address that you want to use as a user credential to the AQS Data Mart service. After a successful call to aqs_sign_up an email message will be sent to the email address provided with a new Data Mart key which will be used as a credential key to access the Data Mart API. The aqs_sign_up function can also be used to regenerate a new key for an existing user, to generate a new key simply call the aqs_sign_up function with the parameter “email” set to an existing account. A new key will be e-mailed to the account given.</p>
-<p>The credentials used to access the Data Mart API service are stored in an R environment variable that needs to be set every time the RAQSAPI library is attached or the key is changed. Without valid credentials, the Data Mart server will reject any request sent to it. The key used with Data Mart is a key and is not a password, so the RAQSAPI library does not treat the key as a password; this means that the key is stored in plain text and there are no attempts to encrypt Data Mart credentials as would be done for a username and password combination. The key that is supplied to use with Data Mart is not intended for authentication but only account monitoring. Each time RAQSAPI is loaded and before using any of it’s functions use the aqs_credentials <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> function to enter in the user credentials so that RAQSAPI can access the AQS Data Mart server.</p>
+<p>The credentials used to access the Data Mart API service are stored in a R environment variable that needs to be set every time the <code>RAQSAPI</code> library is attached or the key is changed. Without valid credentials, the Data Mart server will reject any request sent to it. The key used with Data Mart is a key and is not a password, so the RAQSAPI library does not treat the key as a password; this means that the key is stored in plain text and there are no attempts to encrypt Data Mart credentials as would be done for a username and password combination. The key that is supplied to use with Data Mart is not intended for authentication but only account monitoring. Each time RAQSAPI is loaded and before using any of it’s functions use the aqs_credentials <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> function to enter in the user credentials so that RAQSAPI can access the AQS Data Mart server.</p>
 <table>
 <colgroup>
 <col width="100%" />
@@ -162,8 +163,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <thead>
 <tr class="header">
 <th><span style="color:red"> Note: The credentials used to access AQS Data Mart<br />
-API are not the same as the credentials used to access AQS. AQS users who do<br />
-not have access to the AQS Data Mart will need to create new credentials<br />
+API is not the same as the credentials used to access AQS. AQS users who do<br />
+not have access to the AQS Data Mart will need to create new credentials.<br />
 </span></th>
 </tr>
 </thead>
@@ -171,12 +172,41 @@ not have access to the AQS Data Mart will need to create new credentials<br />
 </tbody>
 </table>
 </div>
+<div id="suggested-use-the-keyring-package-to-manage-credentials" class="section level2">
+<h2>(suggested) Use the <code>keyring</code> package to manage credentials</h2>
+<p>It is highly suggested that users use a keyring manager to store and retrieve their credentials while using RAQSAPI. One such credential manager is provided by the <code>keyring</code> package <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. The <code>Keyring</code> package uses the credential manager available for most popular operating systems to store and manage user credentials. This will help avoid hard coding credential information into R scripts.</p>
+<p>To use the <code>keyring</code> package with <code>RAQSAPI</code> first install <code>keyring</code>:</p>
+<blockquote>
+<p>install.package(“keyring”)</p>
+</blockquote>
+<p>Ensure that your system is supported by the <code>keyring</code> package before proceeding.</p>
+<blockquote>
+<p>keyring::has_keyring_support()</p>
+</blockquote>
+<p>then set the keyring used to access AQS Data Mart (make sure to replace the text in the angled brackets with your specific user information):</p>
+<blockquote>
+<p>library(“keyring”) keyring::key_set(service = “AQSDatamart”, username = “&lt;user email account&gt;”)</p>
+</blockquote>
+<p>a popup window will appear for the user to input their keyring information. Enter the AQS Data mart credential key associated with the AQS user name provided, then hit enter. Now the AQS Data Mart user credential is set using <code>keyring</code>.</p>
+<p>To retrieve the keyring to use with <code>RAQSAPI</code> load the <code>keyring</code> package and use the function key_get to return the user credential to RAQSAPI:</p>
+<blockquote>
+<p>library(RAQSAPI) library(keyring) datamartAPI_user &lt;- &lt;user email account&gt; server &lt;- “AQSDatamart”</p>
+</blockquote>
+<p>then pass these variables to the aqs_credentials function when using RAQSAPI:</p>
+<blockquote>
+<p>aqs_credentials(username = datamartAPI_user, key = key_get(service = server, username = datamartAPI_user ) )</p>
+</blockquote>
+<p>To change the keyring stored with the <code>keyring</code> package repeat the steps above to call the keyring::key_set function again with the new credential information.</p>
+<p>To retrieve a list of all keyrings managed with the <code>keyring</code> package use the function: &gt; keyring::key_list()</p>
+<p>Refer the the<a href="https://cran.r-project.org/package=keyring/readme/README.html"><code>keyring</code> package documentation</a> for an in depth explanation on using the <code>keyring</code> package.</p>
+</div>
 </div>
 <div class="footnotes">
 <hr />
 <ol>
 <li id="fn1"><p>Use “?aqs_sign_up” after the RAQSAPI library has been loaded to see the full usage description of the aqs_sign_up function.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 <li id="fn2"><p>Use “?aqs_credentials” after the RAQSAPI library has been loaded to see the full usage description of the aqs_credentials function.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>[R <code>Keyring</code> package]<a href="https://cran.r-project.org/package=keyring" class="uri">https://cran.r-project.org/package=keyring</a>)<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 

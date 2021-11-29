@@ -61,9 +61,8 @@ Returns multiple years of data where annual data is
 aggregated at the Core Based Statistical Area (CBSA) level.
 Returned is an annual summary
 matching the input parameter, and cbsa_code
-provided for bdate - edate time frame. The data
-returned is summarized at the annual level. Variables
-returned include mean value, maxima, percentiles, and etc. If
+provided for bdate - edate time frame. Variables returned
+include mean value, maxima, percentiles, and etc. If
 return_header is FALSE (default) the object returned is a
 tibble, if TRUE an AQS_API_v2 object.
 }

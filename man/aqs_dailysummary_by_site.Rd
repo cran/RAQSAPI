@@ -70,13 +70,12 @@ the second item (\$Data) is a tibble of the data returned.
 }
 \description{
 \lifecycle{stable}
-Returns a table of daily summaries with the
-matching input parameter, stateFIPS, county_code, and sitenum
-provided for bdate - edate time frame. The data returned is
-summarized at the daily level. All daily summaries are
-calculated on midnight to midnight basis in local time.
-Variables returned include date, mean value, maximum value,
-etc.
+Returns multiple years of data where daily data is
+aggregated at the site level. Returned is a daily summary
+matching the input parameter stateFIPS, countycode, and sitenum
+provided for bdate - edate time frame. Data is aggregated at the
+state level. Variables returned include mean value, maxima,
+percentiles, and etc.
 }
 \note{
 The AQS API only allows for a single year of dailysummary to be
@@ -111,6 +110,9 @@ API server. This operation has a linear run time of
 Other Aggregate _by_site functions: 
 \code{\link{aqs_annualsummary_by_site}()},
 \code{\link{aqs_monitors_by_site}()},
+\code{\link{aqs_qa_annualpeferomanceeval_by_site}()},
+\code{\link{aqs_qa_annualperformanceevaltransaction_by_county}()},
+\code{\link{aqs_qa_annualperformanceevaltransaction_by_site}()},
 \code{\link{aqs_qa_blanks_by_site}()},
 \code{\link{aqs_qa_collocated_assessments_by_site}()},
 \code{\link{aqs_qa_flowrateaudit_by_site}()},

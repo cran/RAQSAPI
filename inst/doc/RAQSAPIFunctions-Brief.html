@@ -67,30 +67,36 @@ call.</span></th>
 <h2>Data Mart aggregate functions</h2>
 <p>These functions retrieve aggregated data from the Data Mart API and are grouped by how each function aggregates the data. There are 7 different families of related aggregate functions in which the AQS Data Mart API groups data.</p>
 <p><strong>These seven families are</strong>:</p>
-<ol style="list-style-type: decimal">
+<ul>
 <li><strong>_by_site</strong></li>
 <li><strong>_by_county</strong></li>
 <li><strong>_by_state</strong></li>
 <li><strong>_by_&lt;latitude/longitude bounding box&gt;</strong> (_by_box)</li>
 <li><strong>_by_&lt;monitoring agency&gt;</strong> (_by_MA)</li>
 <li><strong>_by_&lt;Primary Quality Assurance Organization&gt;</strong> (_by_pqao)</li>
-<li><strong>_by_&lt;core based statistical area&gt;</strong> (_by_cbsa).</li>
-</ol>
-<p>Within these families of aggregated data functions there are functions that call on the 11 different aggregate services that the Data Mart API provides. <strong>Note that not all aggregations are available for each service.</strong></p>
-<p><strong>These eleven services are</strong>:</p>
-<ol style="list-style-type: decimal">
-<li><strong>Monitors</strong> (<em>monitors_by_</em>)</li>
-<li><strong>Sample Data</strong> (<em>sampledata_by_</em>)</li>
-<li><strong>Daily Summary Data</strong> (<em>dailydata_by_</em>)</li>
-<li><strong>Annual Summary Data</strong> (<em>annualdata_by_</em>)</li>
-<li><strong>Quality Assurance - Blanks Data</strong> (<em>qa_blanks_by_</em>)</li>
-<li><strong>Quality Assurance - Collocated Assessments</strong> (<em>qa_collocated_assessments_by_</em>)</li>
-<li><strong>Quality Assurance - Flow Rate verifications</strong> (<em>qa_flowrateverification_by_</em>)</li>
-<li><strong>Quality Assurance - Flow Rate Audits</strong> (<em>aqs_qa_flowrateaudit_by_</em>)</li>
-<li><strong>Quality Assurance - One Point Quality Control Raw Data</strong> (<em>qa_one_point_qc_by_</em>)</li>
-<li><strong>Quality Assurance - PEP Audits</strong> (<em>qa_pep_audit_by_</em>)</li>
-<li><strong>Transaction Sample - AQS Submission data in transaction Format (RD)</strong> (<em>aqs_transactionsample_by_</em>)</li>
-</ol>
+<li><strong>_by_&lt;core based statistical area (as defined by the</strong><br />
+<strong>US census Bureau)&gt;</strong> (_by_cbsa).</li>
+</ul>
+<p>Within these families of aggregated data functions there are functions that call on the 13 different aggregate services that the Data Mart API provides. <strong>Note that not all aggregations are available for each service.</strong></p>
+<p><strong>These fourteen services are</strong>:</p>
+<ul>
+<li><strong>Monitors</strong> (monitors_by_*)</li>
+<li><strong>Sample Data</strong> (sampledata_by_*)</li>
+<li><strong>Daily Summary Data</strong> (dailydata_by_*)</li>
+<li><strong>Annual Summary Data</strong> (annualdata_by_*)</li>
+<li><strong>Quarterly Summary Data</strong> (q</li>
+<li><strong>Quality Assurance - Blanks Data</strong> (qa_blanks_by_*)</li>
+<li><strong>Quality Assurance - Collocated Assessments</strong> (qa_collocated_assessments_by_*)</li>
+<li><strong>Quality Assurance - Flow Rate Verifications</strong> (qa_flowrateverification_by_*)</li>
+<li><strong>Quality Assurance - Flow Rate Audits</strong> (aqs_qa_flowrateaudit_by_*)</li>
+<li><strong>Quality Assurance - One Point Quality Control Raw Data</strong> (qa_one_point_qc_by_*)</li>
+<li><strong>Quality Assurance - PEP Audits</strong> (qa_pep_audit_by_*)</li>
+<li><strong>Transaction Sample - AQS Submission data in transaction Format (RD)</strong> (aqs_transactionsample_by_*)</li>
+<li><strong>Quality Assurance - Annual Performance Evaluations</strong><br />
+(aqs_qa_annualpeferomanceeval_by_*)</li>
+<li><strong>Quality Assurance - Annual Performance Evaluations in the AQS</strong><br />
+<strong>Submission transaction format (RD)</strong> (aqs_qa_annualperformanceevaltransaction_by_*)</li>
+</ul>
 <table>
 <colgroup>
 <col width="100%" />
@@ -108,10 +114,10 @@ will take to return the results.</span></th>
 <tbody>
 </tbody>
 </table>
-<p>Aggregate functions are named AQS_API&lt;service&gt;_&lt;aggregation&gt;() where &lt;service&gt; is one of the 11 services listed above and &lt;aggregation&gt; is either &quot;_by_site“,”_by_county“,”_by_state“,”_by_box“,”_by_cbsa&quot;.</p>
+<p>Aggregate functions are named AQS_API&lt;service&gt;_&lt;aggregation&gt;() where &lt;service&gt; is one of the 13 services listed above and &lt;aggregation&gt; is either “_by_site”, “_by_county”, “_by_state”, “_by_box”, “_by_cbsa”.</p>
 <div id="see-the-raqsapi-vignette-for-more-details" class="section level3">
 <h3>See the RAQSAPI vignette for more details</h3>
-<p>(RAQSAPI must be installed first)</p>
+<p>(RAQSAPI must be installed and built with BUILD_MANUAL = TRUE enabled)</p>
 <blockquote>
 <p>RShowDoc(what=“RAQSAPIvignette”, type=“html”, package=“RAQSAPI”)</p>
 </blockquote>
