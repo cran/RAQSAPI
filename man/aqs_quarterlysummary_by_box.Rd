@@ -69,16 +69,18 @@ from the API server mostly used for debugging
 purposes in addition to the data requested.}
 }
 \value{
-a tibble or an AQS_Data Mart_APIv2 S3 object that contains daily
-summary statistics for the given parameter for a stateFIPS.
-An AQS_Data Mart_APIv2 is a 2 item named list in which the first
-item (\$Header) is a tibble of header information from the AQS API
-and the second item (\$Data) is a tibble of the data returned.
+a tibble or an AQS_Data Mart_APIv2 S3 object that contains quarterly
+summary statistics for an area within a latitude/longitude
+bounding box. An AQS_Data Mart_APIv2 is a 2 item named list in
+which the first item (\$Header) is a tibble of header information
+from the AQS API and the second item (\$Data) is a tibble of the
+data returned.
 }
 \description{
 \lifecycle{stable}
 Returns a tibble or an AQS_Data Mart_APIv2 S3
-object of quarterly summary data aggregated by stateFIPS.
+object of quarterly summary data aggregated by and area within
+a latitude/longitude bounding box.
 }
 \note{
 The AQS API only allows for a single year of quarterly summary to be

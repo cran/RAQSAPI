@@ -239,11 +239,11 @@ aqs_qa_one_point_qc_by_site <- function(parameter, bdate, edate,
 #'           (\$Data) is a tibble of the data returned.
 #' @examples # returns a aqs_v2 S3 object of pep Audit data for FRM PM2.5
 #'           #  at the Huntsville Old Airport site (\#0014) in Madison County,
-#'           #  AL for 2017
+#'           #  AL for 2017 - 2019.
 #'  \dontrun{aqs_qa_pep_audit_by_site(parameter = "88101",
-#'                                    bdate = as.Date("20150101",
+#'                                    bdate = as.Date("20170101",
 #'                                                    format = "%Y%m%d"),
-#'                                    edate = as.Date("20171231",
+#'                                    edate = as.Date("20191231",
 #'                                                      format = "%Y%m%d"),
 #'                                    stateFIPS = "01",
 #'                                    countycode = "089",
@@ -970,7 +970,7 @@ aqs_qa_annualperformanceevaltransaction_by_site <- function(parameter, bdate,
 #'                        item list that contains header information returned
 #'                        from the API server mostly used for debugging
 #'                        purposes in addition to the data requested.
-#' @return a tibble or an AQS_Data Mart_APIv2 S3 object that contains daily
+#' @return a tibble or an AQS_Data Mart_APIv2 S3 object that contains quarterly
 #'           summary statistics for the given parameter for a single countycode
 #'           and stateFIPS combination. An AQS_Data Mart_APIv2 is a 2 item named
 #'           list in which the first item (\$Header) is a tibble of header
@@ -982,7 +982,7 @@ aqs_qa_annualperformanceevaltransaction_by_site <- function(parameter, bdate,
 #'  \dontrun{aqs_quarterlysummary_by_site(parameter = "88101",
 #'                                        bdate = as.Date("20160101",
 #'                                                        format = "%Y%m%d"),
-#'                                        edate = as.Date("20170228",
+#'                                        edate = as.Date("20160331",
 #'                                                        format = "%Y%m%d"),
 #'                                        stateFIPS = "37",
 #'                                        countycode = "183",

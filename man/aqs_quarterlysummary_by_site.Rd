@@ -62,7 +62,7 @@ from the API server mostly used for debugging
 purposes in addition to the data requested.}
 }
 \value{
-a tibble or an AQS_Data Mart_APIv2 S3 object that contains daily
+a tibble or an AQS_Data Mart_APIv2 S3 object that contains quarterly
 summary statistics for the given parameter for a single countycode
 and stateFIPS combination. An AQS_Data Mart_APIv2 is a 2 item named
 list in which the first item (\$Header) is a tibble of header
@@ -95,7 +95,7 @@ API server. This operation has a linear run time of
  \dontrun{aqs_quarterlysummary_by_site(parameter = "88101",
                                        bdate = as.Date("20160101",
                                                        format = "\%Y\%m\%d"),
-                                       edate = as.Date("20170228",
+                                       edate = as.Date("20160331",
                                                        format = "\%Y\%m\%d"),
                                        stateFIPS = "37",
                                        countycode = "183",

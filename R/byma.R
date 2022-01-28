@@ -490,7 +490,7 @@ aqs_transactionsample_by_MA <- function(parameter, bdate, edate, MA_code,
 #'           #  containing annual performance evaluation data for ozone where
 #'           #  the monitoring agency is the Alabama Department of
 #'           #  Environmental Management (MA_code 0013).
-#'           \dontrun{aqs_qa_annualpeferomanceeval_by_pqao(parameter = "44201",
+#'           \dontrun{aqs_qa_annualpeferomanceeval_by_MA(parameter = "44201",
 #'                                                   bdate = as.Date("20170101",
 #'                                                           format = "%Y%m%d"),
 #'                                                   edate = as.Date("20171231",
@@ -499,12 +499,11 @@ aqs_transactionsample_by_MA <- function(parameter, bdate, edate, MA_code,
 #'                                                         )
 #'                   }
 #' @return a tibble or an AQS_Data Mart_APIv2 S3 object of quality assurance
-#'           performance evaluation data. for single monitoring site for the
-#'           sitenum, countycode and stateFIPS requested for the time frame
-#'           between bdate and edate. An AQS_Data_Mart_APIv2 is a 2 item named
-#'           list in which the first item ($Header) is a tibble of header
-#'           information from the AQS API and the second item ($Data) is a
-#'           tibble of the data returned.
+#'           performance evaluation data. for all monitoring sites for with
+#'           the MA_code requested for the time frame between bdate and edate.
+#'           An AQS_Data_Mart_APIv2 is a 2 item named list in which the first
+#'           item ($Header) is a tibble of header information from the AQS API
+#'           and the second item ($Data) is a tibble of the data returned.
 #' @export
 aqs_qa_annualpeferomanceeval_by_MA <- function(parameter, bdate, edate,
                                                MA_code,
@@ -565,16 +564,15 @@ aqs_qa_annualpeferomanceeval_by_MA <- function(parameter, bdate, edate,
 #'                                              )
 #'          }
 #' @return a tibble or an AQS_Data Mart_APIv2 S3 object of quality assurance
-#'           performance evaluation data. for single monitoring site for the
-#'           sitenum, countycode and stateFIPS requested for the time frame
-#'           between bdate and edate. An AQS_Data_Mart_APIv2 is a 2 item named
-#'           list in which the first item ($Header) is a tibble of header
-#'           information from the AQS API and the second item ($Data) is a
-#'           tibble of the data returned.
+#'           performance evaluation data in the AQS submissions transaction
+#'           format (RD)for all sites matching the MA_code requested for the
+#'           time frame between bdate and edate. An AQS_Data_Mart_APIv2 is a 2
+#'           item named list in which the first item ($Header) is a tibble of
+#'           header information from the AQS API and the second item ($Data) is
+#'           a tibble of the data returned.
 #' @export
-aqs_qa_annualperformanceevaltransaction_by_MA <- function(parameter,
-                                                                bdate, edate,
-                                                                MA_code,
+aqs_qa_annualperformanceevaltransaction_by_MA <- function(parameter, bdate,
+                                                          edate, MA_code,
                                                           return_header = FALSE)
 {
   checkaqsparams(parameter, bdate, edate, MA_code, return_header)
@@ -583,7 +581,7 @@ aqs_qa_annualperformanceevaltransaction_by_MA <- function(parameter,
                                bdate = bdate,
                                edate = edate,
                                MA_code = MA_code,
-                               service = "qaAnnualPerformanceEvaluations"
+                               service = "transactionsQaAnnualPerformanceEvaluations"
                                )
 
   tqaape <- purrr::pmap(.l = params, .f = aqs_services_by_MA)

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en-US" xml:lang="en-US">
+<html>
 
 <head>
 
@@ -13,7 +13,7 @@
 <meta name="author" content="Clinton Mccrowey physical scientist - US EPA" />
 
 
-<title>RAQSAPI - Acknowledgements</title>
+<title>RAQSAPI - About the timeliness of AQS Data</title>
 
 <script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
 
@@ -43,24 +43,14 @@
 
 
 
-<h1 class="title toc-ignore">RAQSAPI - Acknowledgements</h1>
+<h1 class="title toc-ignore">RAQSAPI - About the timeliness of AQS Data</h1>
 <h4 class="author">Clinton Mccrowey physical scientist - US EPA</h4>
 
 
 
-<div id="acknowledgements" class="section level1">
-<h1>Acknowledgements</h1>
-<p>RAQSAPI was included in the Rblogger’s March 2021: “Top 40” <a href="https://www.r-bloggers.com/2021/04/march-2021-top-40-new-cran-packages/">New CRAN Packages</a>.</p>
-<p>The RAQSAPI package borrows upon functions and code provided by sources not mentioned in the DESCRIPTION file. Here we attempt to acknowledge those sources with them RAQSAPI would not be possible.</p>
-<ul>
-<li>README badges are provided by R package <code>badgecreator</code><span class="citation">[@package:badgecreatr]</span>.</li>
-<li>The R package <code>usethis</code><span class="citation">[@package:usethis]</span> was used to generate GitHub actions for Continuous integration (CI).</li>
-<li>Code cleanup was assisted by the R package <code>lintr</code><span class="citation">[@package:lintr]</span></li>
-<li>the function <em>install.packages</em> are provided by the R package <code>utils</code><span class="citation">[@RBase]</span></li>
-<li>the function <em>install_github</em> are provided by the R package <code>remotes</code><span class="citation">[ @package:remotes]</span></li>
-<li>.gitignore file borrowed examples from <a href="https://github.com/github/gitignore/blob/master/R.gitignore" class="uri">https://github.com/github/gitignore/blob/master/R.gitignore</a></li>
-<li>The RAQSAPI hexsticker was created using the <code>hexSticker</code><span class="citation">[@package:hexsticker]</span> package for R</li>
-</ul>
+<div id="about-the-timeliness-of-aqs-data" class="section level1">
+<h1>About the timeliness of AQS Data</h1>
+<p>EPA’s AQS Datamart API, the service that RAQSAPI retrieves data from, does not host real time (collected now/today) data. If real time data is needed, please use the AirNow API and direct all questions toward real time data there. RAQSAPI does not work with AirNow and cannot retrieve real time data. For more details see section 7.1 of the About AQS Data page<span class="citation">[@AboutAQSdata]</span>.</p>
 </div>
 
 

@@ -1,14 +1,6 @@
-# @importFrom rlang env
-# @importFrom magrittr '%<>%' %>%'
-# @importFrom jsonlite fromJSON
 #' @importFrom lubridate today year mdy '%within%' NA_Date_
 #' @importFrom lifecycle deprecate_soft badge
-# @importFrom purrr map_chr
-# @importFrom gtools invalid
-# @importFrom utils globalVariables
-# @import httr glue rprojroot devtools stringr tibble kableExtra rlang httr
-# @include RAQSAPI.R zzz.R generalfunctions.R AQSAPI_helperfunctions.R
-#             AQS_API.R
+
 
 #' @title RAQSAPI: A R Interface to The United States Environmental Protection
 #' Agency's Air Quality System Data Mart RESTful API server.
@@ -23,7 +15,7 @@
 #' 2) Every time this library is reloaded AQS_API_credentials() function
 #'       must be called before continuing.
 #'
-#' please use vignette(RAQSAPI) for more details  about this package.
+#' please use vignette(RAQSAPI) for more details about this package.
 #'
 #' EPA Disclaimer:
 #' This software/application was developed by the U.S. Environmental Protection
