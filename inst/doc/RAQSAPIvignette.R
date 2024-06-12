@@ -50,16 +50,16 @@ RAQSAPI_functions <- c(
 "aqs_monitors_by_state",  
 "aqs_parameters_by_class",  
 "aqs_pqaos",
-"aqs_qa_annualPeferomanceeval_by_county",
-"aqs_qa_annualPeferomanceeval_by_MA",
-"aqs_qa_annualPeferomanceeval_by_pqao",
-"aqs_qa_annualPeferomanceeval_by_site",
-"aqs_qa_annualPeferomanceeval_by_state",
-"aqs_qa_annualPeferomanceevaltransaction_by_county",
-"aqs_qa_annualPeferomanceevaltransaction_by_MA",
-"aqs_qa_annualPeferomanceevaltransaction_by_pqao",
-"aqs_qa_annualPeferomanceevaltransaction_by_site",
-"aqs_qa_annualPeferomanceevaltransaction_by_state",
+"aqs_qa_annualperformanceeeval_by_county",
+"aqs_qa_annualperformanceeval_by_MA",
+"aqs_qa_annualperformanceeval_by_pqao",
+"aqs_qa_annualperformanceeval_by_site",
+"aqs_qa_annualperformanceeval_by_state",
+"aqs_qa_annualperformanceevaltransaction_by_county",
+"aqs_qa_annualperformanceevaltransaction_by_MA",
+"aqs_qa_annualperformanceevaltransaction_by_pqao",
+"aqs_qa_annualperformanceevaltransaction_by_site",
+"aqs_qa_annualperformanceevaltransaction_by_state",
 "aqs_qa_blanks_by_county",  
 "aqs_qa_blanks_by_MA",  
 "aqs_qa_blanks_by_pqao",  
@@ -123,7 +123,7 @@ str_subset(string = RAQSAPI_functions, pattern = signupandcredentials) %>%
 
 ## ----METADATAFUNCTIONS, echo = FALSE, comment = NA----------------------------
 metadatafunctions <- paste(".available",
-                           ".field_by_service",
+                           ".fields_by_service",
                            ".knownissues", sep = '|')
 
 str_subset(string = RAQSAPI_functions, pattern = metadatafunctions) %>%
@@ -190,4 +190,7 @@ misc_functions <- paste("aqs_removeheader", sep = '|')
 
 str_subset(string = RAQSAPI_functions, pattern = misc_functions) %>%
   cat(sep = "  \n")
+
+## ----setup, include=FALSE-----------------------------------------------------
+knitr::opts_chunk$set(echo = TRUE)
 
